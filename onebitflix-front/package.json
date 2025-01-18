@@ -1,0 +1,32 @@
+{
+  "name": "onebitflix-front",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "aos": "^2.3.4",
+    "axios": "^0.26.1",
+    "bootstrap": "^5.3.3",
+    "next": "15.1.5",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "react-player": "^2.10.0",
+    "reactstrap": "^9.2.3",
+    "sass": "^1.50.1",
+    "swr": "^2.3.0"
+  },
+  "devDependencies": {
+    "@eslint/eslintrc": "^3",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "eslint": "^9",
+    "eslint-config-next": "15.1.5",
+    "typescript": "^5"
+  }
+}
