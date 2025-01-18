@@ -19,5 +19,16 @@ delete: async (userId: number, courseId: number) => {
       courseId
     }
   })
+},
+
+isLiked: async (userId: number, courseId: number) => {
+  const like = await Like.findOne({
+    where: {
+      userId,
+      courseId
+    }
+  })
+
+  return like !== null ? true : false
 }
 }
