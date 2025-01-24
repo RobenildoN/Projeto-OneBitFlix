@@ -8,7 +8,7 @@ import { useRouter } from "next/router";
 Modal.setAppElement("#__next");
 
 const HeaderAuth = function () {
-    const router = useRouter();
+  const router = useRouter();
   const [modalOpen, setModalOpen] = useState(false);
 
   const handleOpenModal = () => {
@@ -20,9 +20,9 @@ const HeaderAuth = function () {
   };
 
   const handleLogout = () => {
-	sessionStorage.clear();
-  router.push("/");
-};
+    sessionStorage.clear();
+    router.push("/");
+  };
 
   return (
     <>
@@ -62,7 +62,9 @@ const HeaderAuth = function () {
           <Link href="/profile">
             <p className={styles.modalLink}>Meus Dados</p>
           </Link>
-          <p className={styles.modalLink} onClick={handleLogout}>Sair</p>
+          <p className={styles.modalLink} onClick={handleLogout}>
+            Sair
+          </p>
         </Modal>
       </Container>
     </>
