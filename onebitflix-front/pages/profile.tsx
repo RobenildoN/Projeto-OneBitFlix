@@ -1,6 +1,6 @@
 import Head from "next/head";
 import styles from "../styles/profile.module.scss";
-import UserFrom from "@/components/profile/user";
+import UserForm from "@/components/profile/user";
 import HeaderAuth from "@/components/common/headerAuth";
 import { Button, Col, Container, Row } from "reactstrap";
 import Footer from "@/components/common/footer";
@@ -28,7 +28,7 @@ const UserInfo = function () {
         </Button>
       </Col>
       <Col md>
-	      <UserFrom />
+	      <UserForm />
       </Col>
      </Row>
    </Container>
