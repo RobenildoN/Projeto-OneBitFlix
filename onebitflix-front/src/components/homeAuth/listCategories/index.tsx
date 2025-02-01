@@ -2,8 +2,8 @@ import useSWR from "swr";
 import categoriesService, {
   CategoryType,
 } from "../../../services/categoriesService";
-//import SwrSpinner from "../../common/swrSpinner";
 import ListCategoriesSlide from "../listCategoriesSlide";
+import SwrSpinner from "@/components/common/spinner";
 
 const ListCategories = function () {
   const { data, error } = useSWR(
@@ -12,13 +12,8 @@ const ListCategories = function () {
   );
 
   if (error) return error;
-  //if (!data) return <SwrSpinner />;
-  if (!data)
-    return (
-      <>
-        <p>Loading...</p>
-      </>
-    );
+  if (!data) return <SwrSpinner />;
+  //if (!data)return (<><p>Loading...</p></>);
 
   return (
     <>

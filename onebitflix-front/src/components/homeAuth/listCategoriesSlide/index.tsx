@@ -2,7 +2,7 @@ import styles from "../../../../styles/slideCategory.module.scss";
 import useSWR from "swr";
 import categoriesService from "../../../services/categoriesService";
 import SlideComponent from "@/components/common/slideComponent";
-//import SwrSpinner from "../../../common/swrSpinner";
+import SwrSpinner from "@/components/common/spinner";
 
 interface props {
     categoryId: number;
@@ -15,8 +15,8 @@ interface props {
     );
 
 if (error) return error;
-//if (!data) return <SwrSpinner />;
-if (!data) return (<><p>Loading...</p></>);
+if (!data) return <SwrSpinner />;
+//if (!data) return (<><p>Loading...</p></>);
 
 return (
 	<>

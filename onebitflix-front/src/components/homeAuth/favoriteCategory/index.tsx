@@ -2,18 +2,14 @@ import courseService from "../../../services/courseService";
 import styles from "../../../../styles/slideCategory.module.scss";
 import useSWR from "swr";
 import SlideComponent from "@/components/common/slideComponent";
+import SwrSpinner from "@/components/common/spinner";
 
 const FavoritesCourses = function () {
   const { data, error } = useSWR("/favCourses", courseService.getFavCourses);
 
   if (error) return error;
-  //if (!data) return <SwrSpinner />;
-  if (!data)
-    return (
-      <>
-        <p>Loading...</p>
-      </>
-    );
+  if (!data) return <SwrSpinner />;
+  //if (!data) return (<> <p>Loading...</p></>);
 
   return (
     <>
