@@ -91,6 +91,7 @@
     width: 550px;
   }
   .formBtn {
+    text-decoration: none;
     border-color: $lightRed;
     text-align: center;
     color: white;
@@ -117,6 +118,7 @@
     padding: 0px 0px 50px 0px;
   }
   .renderFormBtn {
+    text-decoration: none;
     display: block;
     width: 200px;
     border: 1px solid $darkGray;
