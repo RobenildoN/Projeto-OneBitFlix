@@ -132,11 +132,10 @@ const [errorMessage, setErrorMessage] = useState("");
     onChange={(event) => { setEmail(event.target.value) }}
     />
 </FormGroup>
-
-  <Button type="submit" className={styles.formBtn} outline>
+</div>
+<Button type="submit" className={styles.formBtn} outline>
 	  Salvar Alterações
   </Button>
-</div>
 </Form>
 <ToastComponent color={color} isOpen={toastIsOpen} message={errorMessage}/>
 </>;
