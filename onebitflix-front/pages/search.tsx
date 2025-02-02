@@ -48,7 +48,9 @@ useEffect(() => {
         </Container>
         </div>
         ) : (
+          <div className={styles.searchResult}>
           <p className={styles.noSearchText}>Nenhum resultado encontrado!</p>
+          </div>
         )}
         <div className={styles.headerFooterBg}>
           <Footer />
