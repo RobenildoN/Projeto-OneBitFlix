@@ -10,12 +10,21 @@ import EpisodeList from "@/components/episodeList";
 import Footer from "@/components/common/footer";
 
 const CoursePage = function () {
-    const [course, setCourse] = useState<CourseType>();
-    const [liked, setLiked] = useState(false);
-    const [favorited, setFavorited] = useState(false);
-    const router = useRouter();
-    const { id } = router.query;
-
+  const [course, setCourse] = useState<CourseType>();
+  const [liked, setLiked] = useState(false);
+  const [favorited, setFavorited] = useState(false);
+  const router = useRouter();
+  const { id } = router.query;
+  const [loading, setLoading] = useState(true);
+  
+  useEffect(() => {
+    if (!sessionStorage.getItem("onebitflix-token")) {
+      router.push("/login");
+    } else {
+      setLoading(false);
+    }
+  }, []);
+  
     const getCourse = async function () {
         if (typeof id !== "string") return;
     
@@ -57,6 +66,10 @@ const CoursePage = function () {
     };
 
     if(course === undefined) return <SwrSpinner/>;
+  
+    if (loading) {
+      return <SwrSpinner />;
+    }
 
   return (
     <>
