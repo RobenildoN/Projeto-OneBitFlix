@@ -1,12 +1,13 @@
 @import "../../../../styles/colors.module.scss";
 .slide {
+  text-decoration: none;
   width: 280px;
   height: 300px;
   border: 1px solid $darkGray;
   transition: 0.4s;
   cursor: pointer;
   margin-left: 12px;
-  
+  text-decoration: none;
   overflow: hidden;
   text-overflow: clip;
 
@@ -26,13 +27,14 @@
     font-weight: bold;
     padding: 8px 16px;
   }
-  .slideDescription {
-    text-decoration: none;
+
+.slideDescription {
     font-size: 14px;
     padding: 0px 16px;
     color: #ccc8c8;
   }
 
+  
   @media (max-width: 1200px) {
     .slide {
       margin-left: 20px;
