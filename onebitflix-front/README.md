@@ -1,150 +1,108 @@
-# OneBitFlix - Frontend
+# 🎬 OneBitFlix - Frontend
 
-Este é o frontend da plataforma OneBitFlix, uma aplicação de streaming de cursos desenvolvida com Next.js, React e TypeScript.
+<div align="center">
+  <img src="./public/logoOnebitflix.svg" alt="Logo OneBitFlix" width="300px">
+  <br><br>
+  <p><strong>Sua plataforma de streaming de cursos de programação</strong></p>
+</div>
 
-## 📋 Pré-requisitos
+## 📋 Sobre o Projeto
 
-Antes de começar, você precisa ter instalado em sua máquina:
+O **OneBitFlix** é uma plataforma de streaming focada em cursos de programação, inspirada na interface da Netflix. Este repositório contém o código frontend da aplicação, desenvolvido como parte do curso da One Bit Code.
 
-- [Node.js](https://nodejs.org/) (versão 18 ou superior)
-- [PostgreSQL](https://www.postgresql.org/) (para o banco de dados)
-- [Git](https://git-scm.com/)
+A plataforma permite aos usuários:
+- 👤 Criar conta e gerenciar perfil
+- 🔍 Pesquisar cursos por categoria
+- ❤️ Favoritar cursos
+- 📺 Assistir episódios de cursos
+- 👍 Curtir conteúdos
 
-## 🚀 Como executar
+## 🚀 Tecnologias Utilizadas
 
-### 1. Clone o repositório
+Este projeto foi desenvolvido com as seguintes tecnologias:
 
-```bash
-git clone <url-do-repositorio>
-cd Projeto-OneBitFlix
-```
+- **[Next.js](https://nextjs.org/)** (v15.1.5) - Framework React para renderização do lado do servidor
+- **[React](https://reactjs.org/)** (v19.0.0) - Biblioteca JavaScript para construção de interfaces
+- **[TypeScript](https://www.typescriptlang.org/)** (v5) - Superset JavaScript com tipagem estática
+- **[Bootstrap](https://getbootstrap.com/)** (v5.3.3) e **[Reactstrap](https://reactstrap.github.io/)** (v9.2.3) - Framework CSS para design responsivo
+- **[SASS](https://sass-lang.com/)** (v1.50.1) - Pré-processador CSS
+- **[Axios](https://axios-http.com/)** (v0.26.1) - Cliente HTTP para requisições à API
+- **[SWR](https://swr.vercel.app/)** (v2.3.0) - Biblioteca para busca, cache e atualização de dados
+- **[React Player](https://github.com/cookpete/react-player)** (v2.16.0) - Componente para reprodução de vídeos
+- **[Splide](https://splidejs.com/)** (v0.7.12) - Biblioteca para criação de carrosséis
+- **[AOS](https://michalsnik.github.io/aos/)** (v2.3.4) - Biblioteca para animações de scroll
 
-### 2. Instale as dependências
-
-```bash
-# Instalar dependências do backend
-cd onebitflix-backend
-npm install
-
-# Instalar dependências do frontend
-cd ../onebitflix-front
-npm install
-```
-
-### 3. Configure o banco de dados
-
-Certifique-se de que o PostgreSQL está rodando e crie o banco de dados:
-
-```sql
-CREATE DATABASE onebitflix_development;
-```
-
-### 4. Configure as variáveis de ambiente
-
-#### Backend (.env)
-```env
-DATABASE_URL=postgres://usuario:senha@localhost:5432/onebitflix_development
-ADMINJS_COOKIE_PASSWORD=sua-senha-adminjs
-JWT_KEY=sua-chave-jwt
-PORT=3001
-```
-
-#### Frontend (.env)
-```env
-NEXT_PUBLIC_BASEURL=http://localhost:3001
-```
-
-### 5. Execute as migrações e seeders (Backend)
-
-```bash
-cd onebitflix-backend
-npm run migrate
-npm run seed
-```
-
-### 6. Execute os servidores
-
-#### Terminal 1 - Backend
-```bash
-cd onebitflix-backend
-npm run dev
-```
-O backend estará disponível em: http://localhost:3001
-
-#### Terminal 2 - Frontend
-```bash
-cd onebitflix-front
-npm run dev
-```
-O frontend estará disponível em: http://localhost:3000
-
-## 🏗️ Estrutura do Projeto
+## 🗂️ Estrutura do Projeto
 
 ```
 onebitflix-front/
-├── pages/                 # Páginas Next.js
-│   ├── _app.tsx          # Configuração global da aplicação
-│   ├── index.tsx         # Página inicial
-│   ├── login.tsx         # Página de login
-│   └── ...
+├── pages/                  # Páginas da aplicação
+│   ├── _app.tsx            # Componente principal da aplicação
+│   ├── course/             # Páginas relacionadas aos cursos
+│   ├── home.tsx            # Página inicial autenticada
+│   ├── index.tsx           # Página inicial não autenticada
+│   ├── login.tsx           # Página de login
+│   ├── profile.tsx         # Página de perfil do usuário
+│   ├── register.tsx        # Página de registro
+│   └── search.tsx          # Página de busca
+├── public/                 # Arquivos estáticos
 ├── src/
-│   ├── components/       # Componentes React
-│   │   ├── common/       # Componentes compartilhados
-│   │   ├── homeAuth/     # Componentes da home autenticada
-│   │   └── ...
-│   ├── services/         # Serviços de API
-│   └── styles/           # Estilos globais
-├── public/               # Arquivos estáticos
-└── ...
+│   ├── components/         # Componentes reutilizáveis
+│   │   ├── common/         # Componentes comuns (header, footer, etc)
+│   │   ├── episodeList/    # Componentes de listagem de episódios
+│   │   ├── homeAuth/       # Componentes da página inicial autenticada
+│   │   ├── homeNoAuth/     # Componentes da página inicial não autenticada
+│   │   ├── profile/        # Componentes da página de perfil
+│   │   └── searchCard/     # Componentes de cards de busca
+│   └── services/           # Serviços de comunicação com a API
+│       ├── api.ts          # Configuração do Axios
+│       ├── authService.ts  # Serviço de autenticação
+│       ├── categoriesService.ts # Serviço de categorias
+│       ├── courseService.ts # Serviço de cursos
+│       ├── episodesService.ts # Serviço de episódios
+│       └── profileService.ts # Serviço de perfil
+└── styles/                 # Arquivos de estilo SCSS
 ```
 
-## 🛠️ Tecnologias Utilizadas
+## 🔧 Instalação e Execução
 
-- **Next.js** - Framework React para produção
-- **React** - Biblioteca para interfaces de usuário
-- **TypeScript** - Superset JavaScript com tipagem
-- **SCSS** - Pré-processador CSS
-- **Axios** - Cliente HTTP
-- **Reactstrap** - Componentes Bootstrap para React
-- **@splidejs/react-splide** - Carrossel/slider
+Para executar este projeto localmente, siga os passos abaixo:
 
-## 📱 Funcionalidades
-
-- ✅ Visualização de cursos em destaque
-- ✅ Sistema de autenticação
-- ✅ Navegação por categorias
-- ✅ Player de vídeo integrado
-- ✅ Sistema de favoritos
-- ✅ Busca de cursos
-- ✅ Interface responsiva
-
-## 🔧 Scripts Disponíveis
-
+1. Clone o repositório:
 ```bash
-npm run dev      # Inicia o servidor de desenvolvimento
-npm run build    # Build para produção
-npm run start    # Inicia o servidor de produção
-npm run lint     # Executa o linter
+git clone https://github.com/seu-usuario/onebitflix-front.git
+cd onebitflix-front
 ```
 
-## 🌐 Acesso à Aplicação
+2. Instale as dependências:
+```bash
+npm install
+# ou
+yarn install
+```
 
-Após executar os comandos acima, acesse:
-- **Frontend**: http://localhost:3000
-- **Backend API**: http://localhost:3001
-- **Admin Panel**: http://localhost:3001/admin
+3. Execute o servidor de desenvolvimento:
+```bash
+npm run dev
+# ou
+yarn dev
+```
 
-## 📝 Notas de Desenvolvimento
+4. Acesse a aplicação em [http://localhost:3000](http://localhost:3000)
 
-- O projeto utiliza SSR (Server-Side Rendering) com Next.js
-- As APIs são consumidas através do Axios
-- O estado global é gerenciado com Context API
-- Os estilos são escritos em SCSS modules
+## 🔨 Scripts Disponíveis
 
-## 🤝 Contribuição
+- `npm run dev` - Inicia o servidor de desenvolvimento
+- `npm run build` - Compila o projeto para produção
+- `npm run start` - Inicia o servidor de produção
+- `npm run lint` - Executa a verificação de linting
 
-1. Faça um fork do projeto
-2. Crie uma branch para sua feature (`git checkout -b feature/nova-feature`)
-3. Commit suas mudanças (`git commit -m 'Adiciona nova feature'`)
-4. Push para a branch (`git push origin feature/nova-feature`)
-5. Abra um Pull Request
+## 📝 Licença
+
+Este projeto está sob a licença MIT.
+
+---
+
+<div align="center">
+  <p>Desenvolvido com ❤️ como parte do curso da One Bit Code</p>
+</div>
