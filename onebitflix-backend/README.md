@@ -1,8 +1,37 @@
-# OneBitFlix - Backend
+# 🎬 OneBitFlix - Backend
 
-Este é o backend da plataforma OneBitFlix, uma API REST desenvolvida com Node.js, Express, TypeScript e Sequelize.
+<div align="center">
+  <img src="public/logoOnebitflix.svg" alt="Logo OneBitFlix" width="300px">
+  <p><i>Sua plataforma de streaming de cursos de programação</i></p>
+</div>
 
-## 📋 Pré-requisitos
+## 📋 Sobre o Projeto
+
+O **OneBitFlix** é uma plataforma de streaming focada em cursos de programação, inspirada na interface da Netflix. Este repositório contém o backend da aplicação, desenvolvido como uma API RESTful utilizando Node.js, Express, TypeScript e Sequelize.
+
+### ✨ Funcionalidades Principais
+
+- 👤 Sistema completo de autenticação e gerenciamento de usuários
+- 📚 Catálogo de cursos organizados por categorias
+- 📺 Reprodução de vídeos com controle de progresso
+- ❤️ Sistema de favoritos para salvar cursos
+- 👍 Sistema de likes para avaliação de conteúdo
+- 🔍 Busca e filtragem de cursos
+- 👑 Painel administrativo completo para gerenciamento de conteúdo
+
+## 🚀 Tecnologias Utilizadas
+
+- **Node.js** - Ambiente de execução JavaScript
+- **Express** - Framework web para Node.js
+- **TypeScript** - Superset JavaScript com tipagem estática
+- **Sequelize** - ORM para bancos de dados relacionais
+- **PostgreSQL** - Banco de dados relacional
+- **AdminJS** - Painel administrativo customizável
+- **JWT** - Autenticação baseada em tokens
+- **Bcrypt** - Hash seguro de senhas
+- **CORS** - Controle de acesso cross-origin
+
+## 🛠️ Pré-requisitos
 
 Antes de começar, você precisa ter instalado em sua máquina:
 
@@ -10,13 +39,13 @@ Antes de começar, você precisa ter instalado em sua máquina:
 - [PostgreSQL](https://www.postgresql.org/) (para o banco de dados)
 - [Git](https://git-scm.com/)
 
-## 🚀 Como executar
+## 📦 Como Executar
 
 ### 1. Clone o repositório
 
 ```bash
 git clone <url-do-repositorio>
-cd Projeto-OneBitFlix/onebitflix-backend
+cd onebitflix-backend
 ```
 
 ### 2. Instale as dependências
@@ -35,125 +64,110 @@ CREATE DATABASE onebitflix_development;
 
 ### 4. Configure as variáveis de ambiente
 
-Crie um arquivo `.env` na raiz do projeto com:
+Crie um arquivo `.env` na raiz do projeto baseado no arquivo `.env.example`:
 
 ```env
 DATABASE_URL=postgres://usuario:senha@localhost:5432/onebitflix_development
 ADMINJS_COOKIE_PASSWORD=sua-senha-adminjs
 JWT_KEY=sua-chave-jwt
-PORT=3001
+PORT=3000
 ```
 
-### 5. Execute as migrações e seeders
+### 5. Execute as migrações
 
 ```bash
-npm run migrate
-npm run seed
+npx sequelize-cli db:migrate
 ```
 
-### 6. Execute o servidor
+### 6. Execute os seeders (opcional)
+
+```bash
+npx sequelize-cli db:seed:all
+```
+
+### 7. Inicie o servidor de desenvolvimento
 
 ```bash
 npm run dev
 ```
 
-O servidor estará disponível em: http://localhost:3001
+O servidor estará disponível em: http://localhost:3000
 
-## 🏗️ Estrutura do Projeto
+## 📁 Estrutura do Projeto
 
 ```
 onebitflix-backend/
 ├── src/
-│   ├── controllers/      # Controladores da API
-│   ├── models/          # Modelos do banco de dados
-│   ├── routes.ts        # Definição das rotas
-│   ├── services/        # Lógica de negócio
-│   ├── middlewares/     # Middlewares personalizados
+│   ├── adminjs/         # Configuração do painel administrativo
+│   │   ├── components/  # Componentes personalizados do AdminJS
+│   │   └── resources/   # Recursos do AdminJS (modelos)
+│   ├── controllers/     # Controladores da API
+│   ├── database/        # Configuração do banco de dados
+│   │   ├── migrations/  # Migrações do Sequelize
+│   │   └── seeders/     # Seeders para dados iniciais
 │   ├── helpers/         # Funções auxiliares
-│   ├── database/        # Configuração do banco
-│   └── adminjs/         # Painel administrativo
-├── uploads/             # Arquivos enviados
+│   ├── middlewares/     # Middlewares personalizados
+│   ├── models/          # Modelos do Sequelize
+│   ├── services/        # Camada de serviços
+│   ├── routes.ts        # Definição das rotas da API
+│   └── server.ts        # Ponto de entrada da aplicação
 ├── public/              # Arquivos estáticos
-└── ...
+├── uploads/             # Arquivos enviados (vídeos, imagens)
+└── config/              # Configurações da aplicação
 ```
 
-## 🛠️ Tecnologias Utilizadas
+## 🔌 Endpoints da API
 
-- **Node.js** - Runtime JavaScript
-- **Express** - Framework web
-- **TypeScript** - Superset JavaScript com tipagem
-- **Sequelize** - ORM para PostgreSQL
-- **PostgreSQL** - Banco de dados relacional
-- **AdminJS** - Painel administrativo
-- **JWT** - Autenticação baseada em tokens
-- **Bcrypt** - Hash de senhas
-- **CORS** - Controle de acesso cross-origin
-
-## 📡 Endpoints da API
-
-### Cursos
-- `GET /courses/newest` - Lista cursos mais recentes
-- `GET /courses/featured` - Lista cursos em destaque
-- `GET /courses/search?name=` - Busca cursos por nome
-- `GET /courses/popular` - Lista cursos populares
-- `GET /courses/:id` - Detalhes de um curso específico
-
-### Autenticação
+### 🔐 Autenticação
 - `POST /auth/register` - Registro de usuário
 - `POST /auth/login` - Login de usuário
 
-### Usuários
+### 👤 Usuários
 - `GET /users/current` - Dados do usuário atual
 - `PUT /users/current` - Atualizar dados do usuário
+- `PUT /users/current/password` - Atualizar senha
 
-### Favoritos
-- `POST /favorites` - Adicionar aos favoritos
-- `DELETE /favorites/:courseId` - Remover dos favoritos
-- `GET /favorites` - Listar favoritos
+### 📚 Categorias
+- `GET /categories` - Listar todas as categorias
+- `GET /categories/:id` - Detalhes de uma categoria específica
 
-### Likes
-- `POST /likes` - Curtir um curso
-- `DELETE /likes/:courseId` - Descurtir um curso
+### 🎓 Cursos
+- `GET /courses/featured` - Cursos em destaque
+- `GET /courses/newest` - Cursos mais recentes
+- `GET /courses/popular` - Cursos mais populares
+- `GET /courses/search?name=` - Buscar cursos por nome
+- `GET /courses/:id` - Detalhes de um curso específico
 
-## 🔧 Scripts Disponíveis
+### 📺 Episódios
+- `GET /episodes/stream?videoUrl=` - Stream de um episódio
+- `GET /episodes/:id/watchTime` - Obter tempo assistido
+- `POST /episodes/:id/watchTime` - Atualizar tempo assistido
 
-```bash
-npm run dev         # Inicia o servidor em modo desenvolvimento
-npm run build       # Compila TypeScript
-npm run start       # Inicia o servidor em produção
-npm run migrate     # Executa migrações do banco
-npm run seed        # Executa seeders
-npm run create-migration # Cria nova migração
-```
+### ❤️ Favoritos
+- `GET /favorites` - Listar cursos favoritos
+- `POST /favorites` - Adicionar curso aos favoritos
+- `DELETE /favorites/:id` - Remover curso dos favoritos
 
-## 🌐 Acesso aos Serviços
+### 👍 Likes
+- `POST /likes` - Dar like em um curso
+- `DELETE /likes/:id` - Remover like de um curso
 
-Após executar o servidor, você terá acesso a:
+## 👨‍💻 Painel Administrativo
 
-- **API REST**: http://localhost:3001
-- **Admin Panel**: http://localhost:3001/admin
-- **Documentação**: http://localhost:3001/api-docs (se configurada)
+O projeto inclui um painel administrativo completo construído com AdminJS, acessível em `/admin`. Este painel permite:
 
-## 📝 Notas de Desenvolvimento
+- Gerenciamento de usuários
+- Criação e edição de categorias
+- Upload e gerenciamento de cursos
+- Upload e gerenciamento de episódios
+- Visualização de estatísticas
 
-- O projeto utiliza TypeScript para maior segurança de tipos
-- As migrações do banco são gerenciadas pelo Sequelize CLI
-- O AdminJS fornece uma interface administrativa completa
-- A autenticação é baseada em JWT tokens
-- As senhas são hasheadas com bcrypt
+## 📄 Licença
 
-## 🔐 Autenticação
+Este projeto está sob a licença ISC.
 
-A API utiliza autenticação baseada em JWT. Para endpoints protegidos, inclua o header:
+---
 
-```
-Authorization: Bearer <seu-token-jwt>
-```
-
-## 🤝 Contribuição
-
-1. Faça um fork do projeto
-2. Crie uma branch para sua feature (`git checkout -b feature/nova-feature`)
-3. Commit suas mudanças (`git commit -m 'Adiciona nova feature'`)
-4. Push para a branch (`git push origin feature/nova-feature`)
-5. Abra um Pull Request
+<div align="center">
+  <p>Desenvolvido com ❤️ como parte do curso da One Bit Code</p>
+</div>
